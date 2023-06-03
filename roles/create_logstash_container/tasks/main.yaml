@@ -5,6 +5,7 @@
     image: studentnv/logstash:7.7.0
     env:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"   
+      ELASTICSEARCH_HOSTS: "http://{{ docker_container_name_elasticsearch }}:9200"
     ports:
       - "9600:9600"
       - "5044:5044"
