@@ -1,6 +1,6 @@
 ---
-- name: Get logs from docker container filebeat
-  ansible.builtin.command: docker logs "{{ docker_container_name_filebeat }}"
+- name: Get logs from docker container "{{ docker_container_name_filebeat_for_elasticsearch }}"
+  ansible.builtin.command: docker logs "{{ docker_container_name_filebeat_for_elasticsearch }}"
   register: logs_output_docker_filebeat
 
 # - name: Show LOGS
@@ -21,7 +21,7 @@
 
 - name: Get log file with docker container filebeat
   docker_container_info:
-    name: filebeat770
+    name: "{{ docker_container_name_filebeat_for_logstash }}"
   register: container_info
 
 # - name: Print log path

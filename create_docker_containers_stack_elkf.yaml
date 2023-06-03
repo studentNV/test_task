@@ -4,7 +4,9 @@
   become: yes
   roles:
     - create_docker_network
+    - create_filebeat_container_for_logstash
+    - create_filebeat_container_for_elasticsearch
     - create_elasticsearch_container
     - create_logstash_container
     - create_kibana_container
-    - create_filebeat_container
+    
