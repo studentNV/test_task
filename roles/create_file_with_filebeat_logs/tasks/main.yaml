@@ -1,19 +1,19 @@
 ---
-- name: Get logs from docker container "{{ docker_container_name_filebeat_to_file }}"
-  ansible.builtin.command: docker logs "{{ docker_container_name_filebeat_to_file }}"
-  register: logs_output_docker_filebeat
+# - name: Get logs from docker container "{{ docker_container_name_filebeat_to_file }}"
+#   ansible.builtin.command: docker logs "{{ docker_container_name_filebeat_to_file }}"
+#   register: logs_output_docker_filebeat
 
-# - name: Show LOGS
-#   debug:
-#     msg: "{{ logs_output_docker_filebeat.stderr }}"
+# # - name: Show LOGS
+# #   debug:
+# #     msg: "{{ logs_output_docker_filebeat.stderr }}"
 
-- name: Copy file SHELL
-  ansible.builtin.copy:
-    content: "{{ logs_output_docker_filebeat.stderr }}"
-    dest:  test1.log
-    owner: root
-    group: root
-    mode: '0644'
+# - name: Copy file SHELL
+#   ansible.builtin.copy:
+#     content: "{{ logs_output_docker_filebeat.stderr }}"
+#     dest:  test1.log
+#     owner: root
+#     group: root
+#     mode: '0644'
 
 
 
@@ -31,7 +31,7 @@
 - name: Copy file DOCKER MODULE
   ansible.builtin.copy:
     src: "{{ container_info.container.LogPath }}"
-    dest:  test2.log
+    dest:  test.log
     owner: root
     group: root
     mode: '0644'
