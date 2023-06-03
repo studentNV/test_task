@@ -1,18 +1,18 @@
 ---
 - name: Create an filebeat:7.7.0 container
   community.docker.docker_container:
-    name: "{{ docker_container_name_filebeat_for_elasticsearch }}"
+    name: "{{ docker_container_name_filebeat_to_logstash }}"
     image: studentnv/filebeat:7.7.0
     env:
       setup.kibana.host: "kibana770:5601"
-      output.elasticsearch.hosts: "[\"elasticsearch770:9200\"]"
+      #output.elasticsearch.hosts: "[\"elasticsearch770:9200\"]"
     output_logs: true
     log_driver: json-file
     networks:
       - name: elastic
     user: root
     volumes:
-      - ./filebeat_dir_for_elasticsearch/filebeat.docker.yaml:/usr/share/filebeat/filebeat.yml:ro
+      - ./filebeat_dir_to_logstash/filebeat.docker.yaml:/usr/share/filebeat/filebeat.yml:ro
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: true
