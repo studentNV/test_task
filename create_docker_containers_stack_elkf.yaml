@@ -1,0 +1,10 @@
+---
+- hosts: group_hosts
+  connection: local
+  become: yes
+  roles:
+    - create_elasticsearch_container
+    - create_logstash_container
+    - create_kibana_container
+    - create_filebeat_container
+    - create_file_with_filebeat_logs

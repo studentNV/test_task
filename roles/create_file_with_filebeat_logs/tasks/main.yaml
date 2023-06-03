@@ -1,0 +1,27 @@
+---
+- name: LOGS
+  ansible.builtin.command: docker logs "{{ docker_container_name_filebeat }}"
+  register: logs_output_docker_filebeat
+
+- name: Show LOGS
+  debug:
+    msg: "{{ logs_output_docker_filebeat.stderr }}"
+
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    content: "{{ logs_output_docker_filebeat.stderr }}"
+    dest:  test.log
+    owner: root
+    group: root
+    mode: '0644'
+
+
+# - name: Get log path for a docker container
+#   docker_container_info:
+#     name: filebeat770
+#   register: container_info
+
+# - name: Print log path
+#   debug:
+#     var: container_info.container
+

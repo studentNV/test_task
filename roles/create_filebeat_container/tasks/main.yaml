@@ -1,0 +1,12 @@
+---
+- name: Create an filebeat:7.7.0 container
+  community.docker.docker_container:
+    name: filebeat770
+    image: studentnv/filebeat:7.7.0
+    env:
+      setup.kibana.host: "kibana770:5601"
+      output.elasticsearch.hosts: "[\"elasticsearch7709200\"]"
+    #log_driver: local
+    log_driver: json-file
+    networks:
+      - name: elastic

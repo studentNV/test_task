@@ -1,0 +1,2 @@
+---
+- import_playbook: create_docker_containers_stack_elkf.yaml
