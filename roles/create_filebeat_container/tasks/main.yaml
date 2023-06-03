@@ -10,6 +10,7 @@
     log_driver: json-file
     networks:
       - name: elastic
+    user: root
     volumes:
       - ./filebeat_dir/filebeat.docker.yaml:/usr/share/filebeat/filebeat.yml:ro
       - /var/lib/docker/containers:/var/lib/docker/containers:ro

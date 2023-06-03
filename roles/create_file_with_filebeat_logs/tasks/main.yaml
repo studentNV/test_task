@@ -1,11 +1,11 @@
 ---
-- name: LOGS
+- name: Get logs from docker container filebeat
   ansible.builtin.command: docker logs "{{ docker_container_name_filebeat }}"
   register: logs_output_docker_filebeat
 
-- name: Show LOGS
-  debug:
-    msg: "{{ logs_output_docker_filebeat.stderr }}"
+# - name: Show LOGS
+#   debug:
+#     msg: "{{ logs_output_docker_filebeat.stderr }}"
 
 - name: Copy file SHELL
   ansible.builtin.copy:
@@ -19,14 +19,14 @@
 
 
 
-- name: Get log path for a docker container
+- name: Get log file with docker container filebeat
   docker_container_info:
     name: filebeat770
   register: container_info
 
-- name: Print log path
-  debug:
-    var: container_info.container.LogPath
+# - name: Print log path
+#   debug:
+#     var: container_info.container.LogPath
 
 - name: Copy file DOCKER MODULE
   ansible.builtin.copy:
