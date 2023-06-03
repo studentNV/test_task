@@ -3,6 +3,7 @@
   connection: local
   become: yes
   roles:
+    - create_docker_network
     - create_elasticsearch_container
     - create_logstash_container
     - create_kibana_container
