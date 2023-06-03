@@ -1,3 +1,5 @@
 ---
 docker_container_name_elasticsearch: elasticsearch770
 docker_container_name_filebeat: filebeat770
+docker_container_name_logstash: logstash770
+docker_container_name_kibana: kibana770

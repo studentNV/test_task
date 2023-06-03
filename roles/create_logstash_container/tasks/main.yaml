@@ -1,7 +1,7 @@
 ---
 - name: Create an logstash:7.7.0 container
   community.docker.docker_container:
-    name: logstash770
+    name: "{{ docker_container_name_logstash }}"
     image: studentnv/logstash:7.7.0
     env:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"   

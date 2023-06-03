@@ -1,7 +1,7 @@
 ---
 - name: Create an filebeat:7.7.0 container
   community.docker.docker_container:
-    name: filebeat770
+    name: "{{ docker_container_name_filebeat }}"
     image: studentnv/filebeat:7.7.0
     env:
       setup.kibana.host: "kibana770:5601"

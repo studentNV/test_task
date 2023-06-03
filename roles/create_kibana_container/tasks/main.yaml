@@ -1,7 +1,7 @@
 ---
 - name: Create an kibana:7.7.0 container
   community.docker.docker_container:
-    name: kibana770
+    name: "{{ docker_container_name_kibana }}"
     image: studentnv/kibana:7.7.0
     #restart: true
     ports:
