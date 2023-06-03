@@ -11,3 +11,7 @@
       - "5044:5044"
     networks:
       - name: elastic
+    volumes:
+        - ./logstash_dir/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+        - ./logstash_data:/usr/share/logstash/logstash_data
+        - ./logstash_dir/logstash.yaml:/usr/share/logstash/config/logstash.yml:ro 
