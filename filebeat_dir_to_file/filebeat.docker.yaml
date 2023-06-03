@@ -12,4 +12,4 @@ filebeat.autodiscover:
 #   hosts: ["logstash770:5044"]
 
 output.file:
-  path: '/usr/share/filebeat/'
+  path: '/usr/share/filebeat/logs'
