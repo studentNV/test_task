@@ -7,21 +7,31 @@
   debug:
     msg: "{{ logs_output_docker_filebeat.stderr }}"
 
-- name: Copy file with owner and permissions
+- name: Copy file SHELL
   ansible.builtin.copy:
     content: "{{ logs_output_docker_filebeat.stderr }}"
-    dest:  test.log
+    dest:  test1.log
     owner: root
     group: root
     mode: '0644'
 
 
-# - name: Get log path for a docker container
-#   docker_container_info:
-#     name: filebeat770
-#   register: container_info
 
-# - name: Print log path
-#   debug:
-#     var: container_info.container
 
+
+- name: Get log path for a docker container
+  docker_container_info:
+    name: filebeat770
+  register: container_info
+
+- name: Print log path
+  debug:
+    var: container_info.container.LogPath
+
+- name: Copy file DOCKER MODULE
+  ansible.builtin.copy:
+    src: "{{ container_info.container.LogPath }}"
+    dest:  test2.log
+    owner: root
+    group: root
+    mode: '0644'

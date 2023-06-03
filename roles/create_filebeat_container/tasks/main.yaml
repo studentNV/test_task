@@ -6,7 +6,7 @@
     env:
       setup.kibana.host: "kibana770:5601"
       output.elasticsearch.hosts: "[\"elasticsearch7709200\"]"
-    #log_driver: local
+    output_logs: true
     log_driver: json-file
     networks:
       - name: elastic
