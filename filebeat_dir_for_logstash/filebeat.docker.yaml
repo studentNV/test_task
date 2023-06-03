@@ -9,7 +9,7 @@ filebeat.autodiscover:
       hints.enabled: true
 
 output.logstash:
-   hosts: ["logstash770:5044"] 
+   hosts: ["logstash770:5400"] 
 
 # output.elasticsearch:
 #   hosts: 'elasticsearch770:9200'

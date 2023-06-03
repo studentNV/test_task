@@ -9,6 +9,7 @@
     ports:
       - "9600:9600"
       - "5044:5044"
+      - "5400:5400"
     networks:
       - name: elastic
     volumes:
