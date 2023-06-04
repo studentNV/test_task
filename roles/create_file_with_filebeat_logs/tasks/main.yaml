@@ -24,9 +24,9 @@
     name: "{{ docker_container_name_filebeat_to_logstash }}"
   register: container_info
 
-# - name: Print log path
-#   debug:
-#     var: container_info.container.LogPath
+- name: Print log path
+  debug:
+    var: container_info.container.LogPath
 
 - name: Copy file DOCKER MODULE
   ansible.builtin.copy:
@@ -35,3 +35,4 @@
     owner: root
     group: root
     mode: '0644'
+  notify: restart containers filebeat to file

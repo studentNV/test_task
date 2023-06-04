@@ -1,15 +1,8 @@
 filebeat.inputs:
 - type: log
   paths:
-    - "./test1.log"
-
-filebeat.autodiscover:
-  providers:
-    - type: docker
-      hints.enabled: true
+    - "/usr/share/filebeat/test.log"
 
 output.logstash:
-   hosts: ["logstash770:5400"] 
+  hosts: ["logstash770:5400"]
 
-# output.elasticsearch:
-#   hosts: 'elasticsearch770:9200'

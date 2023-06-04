@@ -1,0 +1,11 @@
+---
+- name: restart containers filebeat to file
+  community.docker.docker_container:
+    name: "{{ docker_container_name_filebeat_to_file }}"
+    restart: true
+  notify: restart containers filebeat to logstash
+
+- name: restart containers filebeat to logstash
+  community.docker.docker_container:
+    name: "{{ docker_container_name_filebeat_to_logstash }}"
+    restart: true
