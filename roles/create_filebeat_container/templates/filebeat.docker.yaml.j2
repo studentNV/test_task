@@ -1,19 +1,19 @@
-# filebeat.autodiscover:
-#   providers:
-#     - type: docker
-#       templates:
-#         - condition:
-#             contains:
-#               docker.container.name: {{ docker_container_name_filebeat_to_logstash }}
-#           config:
-#             - type: container
-#               paths:
-#                 - /var/lib/docker/containers/${data.docker.container.id}/*.log
+filebeat.autodiscover:
+  providers:
+    - type: docker
+      templates:
+        - condition:
+            contains:
+              docker.container.name: {{ docker_container_name_filebeat_to_logstash }}
+          config:
+            - type: container
+              paths:
+                - /var/lib/docker/containers/${data.docker.container.id}/*.log
 
 filebeat.inputs:
-- type: log
-  paths:
-    - "/usr/share/filebeat/test.log"
+  - type: log
+    paths:
+      - "/usr/share/filebeat/test.log"
 
 
 {% if var_filebeat_container_name == docker_container_name_filebeat_to_logstash %}

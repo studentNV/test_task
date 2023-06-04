@@ -5,8 +5,36 @@ input
    }
 }
 
+filter {
+  if [input][type] == "log" {
+    dissect {
+      mapping => {
+        "message" => "%{Time} %{+Time} %{Priority} %{Logger} %{RandomNumber} %{RandomSymbols} %{Message}"
+      }
+    }
+  }
+  if [input][type] == "container" {
+    mutate {
+      add_tag => [ "[container][name]" ] 
+      remove_field => [ "[log][file][path]", "[container][id]", "[container][image][name]", "[container][name]" ]
+      rename => {
+        "[host][name]" => "host"
+        "message" => "Message"
+      }
+    }
+  }
+}
+
 output {
-   file {
-      path => "/usr/share/logstash/logstash-output.log"
+   if [input][type] == "container" {
+      file {
+         path => "/usr/share/logstash/logs/logstash-output.log"
+      }
    }
+   if [input][type] == "log" { 
+      elasticsearch { 
+         hosts => ["{{ docker_container_name_elasticsearch }}:{{ docker_container_elasticsearch_port }}"] 
+         index => "test-%{+YYYY.MM.dd}"
+      }
+   }  
 }

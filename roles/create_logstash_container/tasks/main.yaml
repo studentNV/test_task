@@ -19,6 +19,7 @@
   community.docker.docker_container:
     name: "{{ docker_container_name_logstash }}"
     image: studentnv/logstash:7.7.0
+    user: root
     env:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"   
       ELASTICSEARCH_HOSTS: "http://{{ docker_container_name_elasticsearch }}:{{ docker_container_elasticsearch_port }}"
@@ -32,4 +33,4 @@
         - ./logstash_dir/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
         - ./logstash_data:/usr/share/logstash/logstash_data
         - ./logstash_dir/logstash.yaml:/usr/share/logstash/config/logstash.yml:ro 
-        #- ./logs_file_logstash:/usr/share/logstash/logs/
+        - ./logs_file_logstash:/usr/share/logstash/logs
