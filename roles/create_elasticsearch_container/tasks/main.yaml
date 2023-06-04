@@ -1,5 +1,5 @@
 ---
-- name: Create an elasticsearch:7.7.0 container
+- name: Create an "{{ docker_image_elasticsearch }}"  container
   community.docker.docker_container:
     name: "{{ docker_container_name_elasticsearch }}"
     image: "{{ docker_image_elasticsearch }}" 

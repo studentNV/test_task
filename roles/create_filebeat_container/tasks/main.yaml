@@ -11,15 +11,12 @@
     group: root
     mode: 0644
 
-- name: Create an filebeat:7.7.0 container to logstash
+- name: Create an "{{ docker_image_filebeat }}" container to logstash
   community.docker.docker_container:
     name: "{{ docker_container_name_filebeat_to_logstash }}"
     image: "{{ docker_image_filebeat }}" 
     env:
       setup.kibana.host: "{{ docker_container_name_kibana }}:5601"
-      #output.elasticsearch.hosts: "[\"elasticsearch770:9200\"]"
-    output_logs: true
-    log_driver: json-file
     networks:
       - name: "{{ docker_network_name }}"
     user: root
@@ -43,15 +40,12 @@
     group: root
     mode: 0644
 
-- name: Create an filebeat:7.7.0 container to file 
+- name: Create an "{{ docker_image_filebeat }}" container to file 
   community.docker.docker_container:
     name: "{{ docker_container_name_filebeat_to_file }}"
     image: "{{ docker_image_filebeat }}" 
     env:
       setup.kibana.host: "kibana770:5601"
-      #output.elasticsearch.hosts: "[\"elasticsearch770:9200\"]"
-    output_logs: true
-    log_driver: json-file
     networks:
       - name: "{{ docker_network_name }}"
     user: root

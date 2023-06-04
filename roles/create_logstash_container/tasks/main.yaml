@@ -15,10 +15,10 @@
     group: root
     mode: 0644
 
-- name: Create an logstash:7.7.0 container
+- name: Create an "{{ docker_image_logstash }}" container
   community.docker.docker_container:
     name: "{{ docker_container_name_logstash }}"
-    image: studentnv/logstash:7.7.0
+    image: "{{ docker_image_logstash }}"
     user: root
     env:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"   
