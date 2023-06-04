@@ -31,6 +31,5 @@
       - name: "{{ docker_network_name }}"
     volumes:
         - ./logstash_dir/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
-        - ./logstash_data:/usr/share/logstash/logstash_data
         - ./logstash_dir/logstash.yaml:/usr/share/logstash/config/logstash.yml:ro 
         - ./logs_file_logstash:/usr/share/logstash/logs
