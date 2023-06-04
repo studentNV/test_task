@@ -2,7 +2,7 @@
 - name: Create an elasticsearch:7.7.0 container
   community.docker.docker_container:
     name: "{{ docker_container_name_elasticsearch }}"
-    image: studentnv/elasticsearch:7.7.0
+    image: "{{ docker_image_elasticsearch }}" 
     env:
       discovery.type: "single-node"
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
@@ -10,4 +10,4 @@
       - "9300:9300"
       - "9200:9200"
     networks:
-      - name: elastic
+      - name: "{{ docker_network_name }}"

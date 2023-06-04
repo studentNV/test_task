@@ -27,7 +27,7 @@
       - "5044:5044"
       - "5400:5400"
     networks:
-      - name: elastic
+      - name: "{{ docker_network_name }}"
     volumes:
         - ./logstash_dir/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
         - ./logstash_data:/usr/share/logstash/logstash_data

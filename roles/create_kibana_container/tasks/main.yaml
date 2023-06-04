@@ -2,11 +2,11 @@
 - name: Create an kibana:7.7.0 container
   community.docker.docker_container:
     name: "{{ docker_container_name_kibana }}"
-    image: studentnv/kibana:7.7.0
+    image: "{{ docker_image_kibana }}"
     #restart: true
     ports:
       - "5601:5601"
     env:
       ELASTICSEARCH_HOSTS: "http://{{ docker_container_name_elasticsearch }}:{{ docker_container_elasticsearch_port }}"
     networks:
-      - name: elastic
+      - name: "{{ docker_network_name }}"
