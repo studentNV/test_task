@@ -2,11 +2,7 @@
 - name: Set filebeat container name to logstash
   set_fact:
     var_filebeat_container_name: filebeat_logstash770
-
-- name: Print return information from the previous task
-  ansible.builtin.debug:
-    var: var_filebeat_container_name
-    
+   
 - name: filebeat.docker.yaml to logstash
   template:
     src: filebeat.docker.yaml.j2
@@ -29,6 +25,7 @@
     user: root
     volumes:
       - ./filebeat_dir_to_logstash/filebeat.docker.yaml:/usr/share/filebeat/filebeat.yml:ro
+      - ./test.log:/usr/share/filebeat/test.log:ro
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: true
