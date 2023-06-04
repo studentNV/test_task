@@ -1,8 +1,14 @@
-filebeat.autodiscovery:
+filebeat.autodiscover:
   providers:
     - type: docker
-      hints.enable: true
-
+      templates:
+        - condition:
+            contains:
+              docker.container.image: "studentnv/filebeat:7.7.0"
+          config:
+            - type: container
+              paths:
+                - /var/lib/docker/containers/${data.docker.container.id}/*.log
 filebeat.inputs:
 - type: log
   paths:

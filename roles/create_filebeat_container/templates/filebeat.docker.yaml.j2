@@ -1,8 +1,14 @@
 filebeat.autodiscover:
   providers:
     - type: docker
-      hints.enabled: true
-
+      templates:
+        - condition:
+            contains:
+              docker.container.image: "{{ docker_image_filebeat }}"
+          config:
+            - type: container
+              paths:
+                - /var/lib/docker/containers/${data.docker.container.id}/*.log
 filebeat.inputs:
 - type: log
   paths:
