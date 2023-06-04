@@ -1,8 +1,14 @@
+filebeat.autodiscovery:
+  providers:
+    - type: docker
+      hints.enable: true
 
 filebeat.inputs:
 - type: log
   paths:
     - "/usr/share/filebeat/test.log"
-    
+
+
+
 output.file:
   path: '/usr/share/filebeat/logs'
