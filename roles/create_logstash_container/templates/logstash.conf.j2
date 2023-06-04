@@ -1,19 +1,21 @@
 input 
 { 
    beats  {
-      port=> {{ docker_container_logstash_port }}
+      port=> 5400
    }
 
 }
 
-filter{
-   
+filter {
+   grok {
+      match => { "message" => "%{COMBINEDAPACHELOG}"}
+   }
 }
 
 output 
 {
-    elasticsearch { 
-         hosts => ["{{ docker_container_name_elasticsearch }}:{{ docker_container_elasticsearch_port }}"] 
-       }
-
+    file {
+      path => /usr/share/logstash/logstash-output.log
+         codec => line { format => "custom format: %{message}"}
+   }
 }
