@@ -5,7 +5,7 @@ filebeat.inputs:
 
 {% if var_filebeat_container_name == docker_container_name_filebeat_to_logstash %}
 output.logstash:
-  hosts: ["{{ docker_container_name_filebeat_to_logstash }}:5400"]
+  hosts: ["{{ docker_container_name_logstash }}:5400"]
 {% endif %}
 
 {% if var_filebeat_container_name == docker_container_name_filebeat_to_file %}

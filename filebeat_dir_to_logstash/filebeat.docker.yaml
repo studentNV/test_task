@@ -1,8 +1,0 @@
-filebeat.inputs:
-- type: log
-  paths:
-    - "/usr/share/filebeat/test.log"
-
-output.logstash:
-  hosts: ["logstash770:5400"]
-
