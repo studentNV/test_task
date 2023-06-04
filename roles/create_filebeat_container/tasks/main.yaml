@@ -60,7 +60,7 @@
       - ./test.log:/usr/share/filebeat/test.log:ro
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./logs_file:/usr/share/filebeat/logs
+      - ./logs_file_filebeat:/usr/share/filebeat/logs
     restart: true
 
 

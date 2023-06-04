@@ -1,17 +1,12 @@
 input 
 { 
    beats  {
-      port=> 5400
+      port=> {{ docker_container_logstash_port }}
    }
-
-}
-
-filter {
-
 }
 
 output {
-  file {
-    path => path => "/usr/share/logstash/pipeline/logstash.conf/test-%{+YYYY-MM-dd}.txt"
-  }
+   file {
+      path => "/usr/share/logstash/logstash-output.log"
+   }
 }

@@ -1,1 +1,2 @@
-logs_file
+logs_file_filebeat
+logs_file_logstash
