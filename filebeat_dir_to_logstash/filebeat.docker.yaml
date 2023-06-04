@@ -4,7 +4,7 @@ filebeat.autodiscover:
       templates:
         - condition:
             contains:
-              docker.container.name: "filebeat_logstash770"
+              docker.container.name: filebeat_logstash770
           config:
             - type: container
               paths:
