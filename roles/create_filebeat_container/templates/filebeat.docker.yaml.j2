@@ -3,12 +3,12 @@ filebeat.inputs:
   paths:
     - "/usr/share/filebeat/test.log"
 
-{% if my_var == 'filebeat_dir_to_logstash' %}
+{% if var_filebeat_container_name == docker_container_name_filebeat_to_logstash %}
 output.logstash:
   hosts: ["logstash770:5400"]
 {% endif %}
 
-{% if my_var == 'filebeat_dir_to_file' %}
+{% if var_filebeat_container_name == docker_container_name_filebeat_to_file %}
 output.file:
   path: '/usr/share/filebeat/logs'
 {% endif %}
