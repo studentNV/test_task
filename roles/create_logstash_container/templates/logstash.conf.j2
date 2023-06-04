@@ -1,0 +1,19 @@
+input 
+{ 
+   beats  {
+      port=> {{ docker_container_logstash_port }}
+   }
+
+}
+
+filter{
+   
+}
+
+output 
+{
+    elasticsearch { 
+         hosts => ["{{ docker_container_name_elasticsearch }}:{{ docker_container_elasticsearch_port }}"] 
+       }
+
+}

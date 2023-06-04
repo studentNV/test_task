@@ -1,4 +1,20 @@
 ---
+- name: logstash.conf
+  template:
+    src: logstash.conf.j2
+    dest: ./logstash_dir/logstash.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: logstash.yaml
+  template:
+    src: logstash.yaml.j2
+    dest: ./logstash_dir/logstash.yaml
+    owner: root
+    group: root
+    mode: 0644
+
 - name: Create an logstash:7.7.0 container
   community.docker.docker_container:
     name: "{{ docker_container_name_logstash }}"

@@ -4,3 +4,5 @@ docker_container_name_filebeat_to_file: filebeat_file770
 docker_container_name_filebeat_to_logstash: filebeat_logstash770
 docker_container_name_logstash: logstash770
 docker_container_name_kibana: kibana770
+docker_container_logstash_port: 5400
+docker_container_elasticsearch_port: 9200
