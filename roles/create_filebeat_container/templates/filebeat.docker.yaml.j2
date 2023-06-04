@@ -1,14 +1,19 @@
-filebeat.inputs:
-- type: log
-  paths:
-    - "/usr/share/filebeat/test.log"
-
 {% if var_filebeat_container_name == docker_container_name_filebeat_to_logstash %}
+filebeat.autodiscovery:
+  providers:
+    - type: docker
+      hints.enable: true
+
 output.logstash:
   hosts: ["{{ docker_container_name_logstash }}:5400"]
 {% endif %}
 
 {% if var_filebeat_container_name == docker_container_name_filebeat_to_file %}
+filebeat.inputs:
+- type: log
+  paths:
+    - "/usr/share/filebeat/test.log"
+    
 output.file:
   path: '/usr/share/filebeat/logs'
 {% endif %}

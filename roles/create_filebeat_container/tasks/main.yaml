@@ -28,11 +28,12 @@
       - name: elastic
     user: root
     volumes:
-      - ./test.log:/usr/share/filebeat/test.log:ro
+      - ./docker_logs.log:/usr/share/filebeat/docker_logs.log:ro
       - ./filebeat_dir_to_logstash/filebeat.docker.yaml:/usr/share/filebeat/filebeat.yml:ro
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: true
+
 
 - name: Set filebeat container name to file
   set_fact:

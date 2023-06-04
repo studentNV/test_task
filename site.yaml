@@ -1,4 +1,4 @@
 ---
 - import_playbook: create_docker_containers_stack_elkf.yaml
-- import_playbook: create_file_with_docker_logs_filebeat.yaml
+#- import_playbook: create_file_with_docker_logs_filebeat.yaml
 
