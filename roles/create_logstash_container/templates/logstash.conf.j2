@@ -7,15 +7,11 @@ input
 }
 
 filter {
-   grok {
-      match => { "message" => "%{COMBINEDAPACHELOG}"}
-   }
+
 }
 
-output 
-{
-    file {
-      path => /usr/share/logstash/logstash-output.log
-         codec => line { format => "custom format: %{message}"}
-   }
+output {
+  file {
+    path => path => "/usr/share/logstash/pipeline/logstash.conf/test-%{+YYYY-MM-dd}.txt"
+  }
 }
