@@ -4,7 +4,7 @@ filebeat.autodiscover:
       templates:
         - condition:
             contains:
-              docker.container.name: filebeat_logstash770
+              docker.container.name: filebeat_logstash
           config:
             - type: container
               paths:
@@ -16,6 +16,6 @@ filebeat.inputs:
       - "/usr/share/filebeat/test.log"
 
 
+output.logstash:
+  hosts: ["logstash:5400"]
 
-output.file:
-  path: '/usr/share/filebeat/logs'
