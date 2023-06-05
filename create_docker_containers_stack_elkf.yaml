@@ -8,4 +8,3 @@
     - create_elasticsearch_container
     - create_logstash_container
     - create_kibana_container
-    

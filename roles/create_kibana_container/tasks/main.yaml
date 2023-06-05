@@ -9,7 +9,6 @@
       ELASTICSEARCH_HOSTS: "http://{{ docker_container_name_elasticsearch }}:{{ docker_container_elasticsearch_port }}"
     networks:
       - name: "{{ docker_network_name }}"
-  notify: POST import kibana dashboard
 
 - name: Check that a page kibana returns successfully 
   ansible.builtin.uri:
@@ -19,5 +18,25 @@
   until: _result.status == 200
   retries: 720 
   delay: 10
-  notify: POST import kibana dashboard
 
+- name: POST import kibana v7.7.0 dashboard
+  ansible.builtin.uri:
+    url: "http://{{ ansible_host }}:{{ docker_container_kibana_port }}/api/kibana/dashboards/import"
+    method: POST
+    body_format: json
+    headers:
+      Content-Type: application/json
+      kbn-xsrf: true
+    src: "{{ path_with_kibana_dashboard_json_v770 }}"
+  when: docker_image_version == "7.7.0"
+
+- name: POST import kibana v6.7.2 dashboard
+  ansible.builtin.uri:
+    url: "http://{{ ansible_host }}:{{ docker_container_kibana_port }}/api/kibana/dashboards/import"
+    method: POST
+    body_format: json
+    headers:
+      Content-Type: application/json
+      kbn-xsrf: true
+    src: "{{ path_with_kibana_dashboard_json_v672 }}"
+  when: docker_image_version == "6.7.2"

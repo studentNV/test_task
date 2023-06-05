@@ -10,12 +10,9 @@ docker_container_logstash_port: 5044
 docker_container_elasticsearch_port: 9200
 docker_network_name: elastic
 
-
-
 docker_image_version: 7.7.0
+#docker_image_version: 6.7.2
 docker_image_filebeat: elastic/filebeat:{{ docker_image_version }}
 docker_image_logstash: logstash:{{ docker_image_version }}
 docker_image_elasticsearch: elasticsearch:{{ docker_image_version }}
 docker_image_kibana: kibana:{{ docker_image_version }}
-
-

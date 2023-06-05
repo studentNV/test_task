@@ -7,9 +7,9 @@
   template:
     src: filebeat.docker.yaml.j2
     dest: "{{ path_with_filebeat_to_logstash_docker_yaml }}"
-    owner: root
-    group: root
-    mode: 0644
+    owner: "{{ user_for_docker_container_filebeat }}"
+    group: "{{ user_for_docker_container_filebeat }}"
+    mode: "{{ folder_permissions }}"
 
 - name: Create an "{{ docker_image_filebeat }}" container to logstash
   community.docker.docker_container:
@@ -19,14 +19,12 @@
       setup.kibana.host: "{{ docker_container_name_kibana }}:{{ docker_container_kibana_port }}"
     networks:
       - name: "{{ docker_network_name }}"
-    user: root
+    user: "{{ user_for_docker_container_filebeat }}"
     volumes:
       - "{{ path_with_filebeat_to_logstash_docker_yaml }}:/usr/share/filebeat/filebeat.yml:ro"
       - "{{ path_with_test_log }}:/usr/share/filebeat/test.log:ro"
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    restart: true
-
 
 - name: Set filebeat container name to file
   set_fact:
@@ -36,9 +34,9 @@
   template:
     src: filebeat.docker.yaml.j2
     dest: ./container_dirs/filebeat_dir/filebeat_to_file.docker.yaml
-    owner: root
-    group: root
-    mode: 0644
+    owner: "{{ user_for_docker_container_filebeat }}"
+    group: "{{ user_for_docker_container_filebeat }}"
+    mode: "{{ folder_permissions }}"
 
 - name: Create an "{{ docker_image_filebeat }}" container to file 
   community.docker.docker_container:
@@ -48,14 +46,10 @@
       setup.kibana.host: "kibana770:5601"
     networks:
       - name: "{{ docker_network_name }}"
-    user: root
+    user: "{{ user_for_docker_container_filebeat }}"
     volumes:
       - ./container_dirs/filebeat_dir/filebeat_to_file.docker.yaml:/usr/share/filebeat/filebeat.yml:ro
       - "{{ path_with_test_log }}:/usr/share/filebeat/test.log:ro"
+      - "{{ path_with_logs_file_filebeat }}:/usr/share/filebeat/logs"
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./logs_file/logs_file_filebeat:/usr/share/filebeat/logs
-    restart: true
-
-
-

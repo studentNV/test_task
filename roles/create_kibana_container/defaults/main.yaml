@@ -1,2 +1,3 @@
 ---
-path_with_kibana_dashboard_json: ./container_dirs/kibana_dir/kibana_dashboard.json
+path_with_kibana_dashboard_json_v672: ./container_dirs/kibana_dir/kibana_dashboard_v672.json
+path_with_kibana_dashboard_json_v770: ./container_dirs/kibana_dir/kibana_dashboard_v770.json

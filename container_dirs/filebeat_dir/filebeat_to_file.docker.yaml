@@ -1,14 +1,4 @@
-filebeat.autodiscover:
-  providers:
-    - type: docker
-      templates:
-        - condition:
-            contains:
-              docker.container.name: filebeat_logstash
-          config:
-            - type: container
-              paths:
-                - /var/lib/docker/containers/${data.docker.container.id}/*.log
+
 
 filebeat.inputs:
   - type: log
