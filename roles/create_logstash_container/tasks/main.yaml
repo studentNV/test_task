@@ -2,7 +2,7 @@
 - name: logstash.conf
   template:
     src: logstash.conf.j2
-    dest: ./container_dirs/logstash_dir/logstash.conf
+    dest: "{{ path_with_logstash_conf }}"
     owner: root
     group: root
     mode: 0644
@@ -10,7 +10,7 @@
 - name: logstash.yaml
   template:
     src: logstash.yaml.j2
-    dest: ./container_dirs/logstash_dir/logstash.yaml
+    dest: "{{ path_with_logstash_yaml }}"
     owner: root
     group: root
     mode: 0644
@@ -24,12 +24,11 @@
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"   
       ELASTICSEARCH_HOSTS: "http://{{ docker_container_name_elasticsearch }}:{{ docker_container_elasticsearch_port }}"
     ports:
-      - "9600:9600"
-      - "5044:5044"
-      - "5400:5400"
+      #- "9600:9600"
+      - "{{ docker_container_logstash_port }}:5044"
     networks:
       - name: "{{ docker_network_name }}"
     volumes:
-        - ./container_dirs/logstash_dir/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
-        - ./container_dirs/logstash_dir/logstash.yaml:/usr/share/logstash/config/logstash.yml:ro 
-        - ./logs_file/logs_file_logstash:/usr/share/logstash/logs
+        - "{{ path_with_logstash_conf }}:/usr/share/logstash/pipeline/logstash.conf:ro"
+        - "{{ path_with_logstash_yaml }}:/usr/share/logstash/config/logstash.yml:ro"
+        - "{{ path_with_logs_file_logstash }}:/usr/share/logstash/logs"

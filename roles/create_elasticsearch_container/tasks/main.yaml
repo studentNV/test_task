@@ -1,5 +1,5 @@
 ---
-- name: Create an "{{ docker_image_elasticsearch }}"  container
+- name: Create an "{{ docker_image_elasticsearch }}" container
   community.docker.docker_container:
     name: "{{ docker_container_name_elasticsearch }}"
     image: "{{ docker_image_elasticsearch }}" 
@@ -7,7 +7,7 @@
       discovery.type: "single-node"
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     ports:
-      - "9300:9300"
-      - "9200:9200"
+      #- "9300:9300"
+      - "{{ docker_container_elasticsearch_port }}:9200"
     networks:
       - name: "{{ docker_network_name }}"

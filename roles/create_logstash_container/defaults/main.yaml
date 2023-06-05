@@ -1,0 +1,4 @@
+---
+path_with_logstash_yaml: ./container_dirs/logstash_dir/logstash.yaml
+path_with_logstash_conf: ./container_dirs/logstash_dir/logstash.conf
+path_with_logs_file_logstash: ./logs_file/logs_file_logstash

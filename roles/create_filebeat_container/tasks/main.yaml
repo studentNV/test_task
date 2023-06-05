@@ -6,7 +6,7 @@
 - name: filebeat.docker.yaml to logstash
   template:
     src: filebeat.docker.yaml.j2
-    dest: ./container_dirs/filebeat_dir/filebeat_to_logstash.docker.yaml
+    dest: "{{ path_with_filebeat_to_logstash_docker_yaml }}"
     owner: root
     group: root
     mode: 0644
@@ -16,13 +16,13 @@
     name: "{{ docker_container_name_filebeat_to_logstash }}"
     image: "{{ docker_image_filebeat }}" 
     env:
-      setup.kibana.host: "{{ docker_container_name_kibana }}:5601"
+      setup.kibana.host: "{{ docker_container_name_kibana }}:{{ docker_container_kibana_port }}"
     networks:
       - name: "{{ docker_network_name }}"
     user: root
     volumes:
-      - ./container_dirs/filebeat_dir/filebeat_to_logstash.docker.yaml:/usr/share/filebeat/filebeat.yml:ro
-      - ./logs_file/test.log:/usr/share/filebeat/test.log:ro
+      - "{{ path_with_filebeat_to_logstash_docker_yaml }}:/usr/share/filebeat/filebeat.yml:ro"
+      - "{{ path_with_test_log }}:/usr/share/filebeat/test.log:ro"
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: true
@@ -51,7 +51,7 @@
     user: root
     volumes:
       - ./container_dirs/filebeat_dir/filebeat_to_file.docker.yaml:/usr/share/filebeat/filebeat.yml:ro
-      - ./logs_file/test.log:/usr/share/filebeat/test.log:ro
+      - "{{ path_with_test_log }}:/usr/share/filebeat/test.log:ro"
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./logs_file/logs_file_filebeat:/usr/share/filebeat/logs

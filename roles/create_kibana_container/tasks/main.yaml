@@ -4,8 +4,20 @@
     name: "{{ docker_container_name_kibana }}"
     image: "{{ docker_image_kibana }}"
     ports:
-      - "5601:5601"
+      - "{{ docker_container_kibana_port }}:5601"
     env:
       ELASTICSEARCH_HOSTS: "http://{{ docker_container_name_elasticsearch }}:{{ docker_container_elasticsearch_port }}"
     networks:
       - name: "{{ docker_network_name }}"
+  notify: POST import kibana dashboard
+
+- name: Check that a page kibana returns successfully 
+  ansible.builtin.uri:
+    url: http://{{ ansible_host }}:{{ docker_container_kibana_port }}/app/kibana#/home
+    method: GET
+  register: _result
+  until: _result.status == 200
+  retries: 720 
+  delay: 10
+  notify: POST import kibana dashboard
+
