@@ -1,0 +1,44 @@
+{
+"index_patterns": ["test-*"],
+        "mappings": {
+            "properties": {
+            "@timestamp": {
+                "type": "date"
+            },
+            "Time": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                    }
+                }
+            },
+            "Logger": {
+                "type": "text",
+                "fields": {
+                "keyword": {
+                    "type": "keyword"
+                    }
+                }
+            },
+            "Priority": {
+            "type": "text",
+            "fields": {
+                "keyword": {
+                "type": "keyword"
+                    }
+                }
+            },
+            "RandomSymbols": {
+                "type": "text"
+            },
+            "RandomNumber": {
+                "type": "text"
+            },
+            "Message": {
+                "type": "text"
+            }
+        }
+    }
+}

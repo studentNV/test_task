@@ -1,5 +1,5 @@
 ---
-- hosts: group_hosts
+- hosts: elkf_hosts
   connection: local
   become: yes
   roles:
