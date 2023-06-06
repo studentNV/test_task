@@ -18,6 +18,12 @@
 - такую же визуализацию, но уже для поля Logger
 - создать dashboard, в котором будут содержаться все выше перечисленные запросы и визуализации
 # Команды для запуска
+
+#### Клонирование репозитория
+```bash
+git clone https://github.com/studentNV/test_task.git
+cd test_task
+```
 #### Развертка стека ELKF версии 6.7.2
 ```bash
 ansible-playbook --extra-vars "docker_image_version=6.7.2" -i inventory.yaml site.yaml -t create_containers -D
