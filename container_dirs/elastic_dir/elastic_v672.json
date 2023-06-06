@@ -1,201 +1,85 @@
 {
-    "index_patterns": ["test-*"],
-        "mappings": {
+"index_patterns": ["test-*"],
+    "mappings": {
         "doc": {
-          "properties": {
-            "@timestamp": {
-              "type": "date"
-            },
-            "@version": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
-                }
-              }
-            },
-            "Logger": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
-                }
-              }
-            },
-            "Message": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
-                }
-              }
-            },
-            "Priority": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
-                }
-              }
-            },
-            "RandomNumber": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
-                }
-              }
-            },
-            "RandomSymbols": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
-                }
-              }
-            },
-            "Time": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
-                }
-              }
-            },
-            "beat": {
-              "properties": {
-                "hostname": {
-                  "type": "text",
-                  "fields": {
-                    "keyword": {
-                      "type": "keyword",
-                      "ignore_above": 256
-                    }
-                  }
+            "properties": {
+                "@timestamp": {
+                    "type": "date"
                 },
-                "name": {
-                  "type": "text",
-                  "fields": {
+                "@version": {
+                    "type": "text",
+                    "fields": {
                     "keyword": {
-                      "type": "keyword",
-                      "ignore_above": 256
+                        "type": "keyword",
+                        "ignore_above": 256
                     }
-                  }
-                },
-                "version": {
-                  "type": "text",
-                  "fields": {
+                }
+            },
+                "Logger": {
+                    "type": "text",
+                    "fields": {
                     "keyword": {
-                      "type": "keyword",
-                      "ignore_above": 256
+                        "type": "keyword",
+                        "ignore_above": 256
                     }
-                  }
                 }
-              }
             },
-            "host": {
-              "properties": {
-                "name": {
-                  "type": "text",
-                  "fields": {
+                "Message": {
+                    "type": "text",
+                    "fields": {
                     "keyword": {
-                      "type": "keyword",
-                      "ignore_above": 256
+                        "type": "keyword",
+                        "ignore_above": 256
                     }
-                  }
                 }
-              }
             },
-            "input": {
-              "properties": {
-                "type": {
-                  "type": "text",
-                  "fields": {
+                "Priority": {
+                    "type": "text",
+                    "fields": {
                     "keyword": {
-                      "type": "keyword",
-                      "ignore_above": 256
+                        "type": "keyword",
+                        "ignore_above": 256
                     }
-                  }
                 }
-              }
             },
-            "log": {
-              "properties": {
-                "file": {
-                  "properties": {
-                    "path": {
-                      "type": "text",
-                      "fields": {
-                        "keyword": {
-                          "type": "keyword",
-                          "ignore_above": 256
-                        }
-                      }
-                    }
-                  }
-                },
-                "flags": {
-                  "type": "text",
-                  "fields": {
+                "RandomNumber": {
+                    "type": "text",
+                    "fields": {
                     "keyword": {
-                      "type": "keyword",
-                      "ignore_above": 256
+                        "type": "keyword",
+                        "ignore_above": 256
                     }
-                  }
                 }
-              }
             },
-            "message": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
-                }
-              }
-            },
-            "offset": {
-              "type": "long"
-            },
-            "prospector": {
-              "properties": {
-                "type": {
-                  "type": "text",
-                  "fields": {
+                "RandomSymbols": {
+                    "type": "text",
+                    "fields": {
                     "keyword": {
-                      "type": "keyword",
-                      "ignore_above": 256
+                        "type": "keyword",
+                        "ignore_above": 256
                     }
-                  }
                 }
-              }
             },
-            "source": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                "Time": {
+                    "type": "text",
+                    "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
                 }
-              }
             },
-            "tags": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                "message": {
+                    "type": "text",
+                    "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
                 }
-              }
             }
-          }
+
+            }
         }
-      }
     }
+}
