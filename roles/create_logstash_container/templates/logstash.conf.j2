@@ -9,7 +9,7 @@ filter {
   if [input][type] == "log" {
     dissect {
       mapping => {
-        "message" => "%{Time} %{+Time} %{Priority} %{Logger} %{RandomNumber} %{RandomSymbols} %{Message}"
+        "message" => "%{Time} %{+Time->} %{Priority} %{Logger} %{RandomNumber} %{RandomSymbols} %{Message}"
       }
     }
   }
