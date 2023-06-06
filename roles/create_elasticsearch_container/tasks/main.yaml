@@ -12,7 +12,6 @@
     networks:
       - name: "{{ docker_network_name }}"
 
-
 - name: Check that an elastic returns successfully 
   ansible.builtin.uri:
     url: "http://{{ ansible_host }}:{{ docker_container_elasticsearch_port }}"
@@ -22,8 +21,7 @@
   retries: 60
   delay: 10
 
-
-- name: PUT 
+- name: PUT elastic 7.7.0 index template
   ansible.builtin.uri:
     url: "http://{{ ansible_host }}:{{ docker_container_elasticsearch_port }}/_template/test_template?pretty"
     method: PUT
@@ -34,7 +32,7 @@
     src: "{{ path_with_elastic_template_json_v770 }}"
   when: docker_image_version == "7.7.0"
 
-- name: PUT 
+- name: PUT elastic 6.7.2 index template
   ansible.builtin.uri:
     url: "http://{{ ansible_host }}:{{ docker_container_elasticsearch_port }}/_template/test_template?pretty"
     method: PUT
