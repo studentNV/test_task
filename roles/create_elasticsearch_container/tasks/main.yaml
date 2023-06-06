@@ -34,11 +34,11 @@
 
 - name: PUT elastic 6.7.2 index template
   ansible.builtin.uri:
-    url: "http://{{ ansible_host }}:{{ docker_container_elasticsearch_port }}/_template/test_template?pretty"
+    url: "http://localhost:9200/_template/test_template?pretty"
     method: PUT
     body_format: json
     headers:
       Content-Type: application/json
       kbn-xsrf: true
-    src: "{{ path_with_elastic_template_json_v672 }}"
+    src: container_dirs/elastic_dir/elastic_v672.json
   when: docker_image_version == "6.7.2"

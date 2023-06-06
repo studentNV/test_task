@@ -1,46 +1,201 @@
 {
-"index_patterns": ["test-*"],
-    "mappings": {
-        "_doc": {
-            "properties": {
-                "@timestamp": {
-                    "type": "date"
-                },
-                "Time": {
-                    "type": "text",
-                    "fields": {
-                        "keyword": {
-                        "type": "keyword",
-                        "ignore_above": 256
-                        }
-                    }
-                },
-                "Logger": {
-                    "type": "text",
-                    "fields": {
-                    "keyword": {
-                        "type": "keyword"
-                        }
-                    }
-                },
-                "Priority": {
-                "type": "text",
-                "fields": {
-                    "keyword": {
-                    "type": "keyword"
-                        }
-                    }
-                },
-                "RandomSymbols": {
-                    "type": "text"
-                },
-                "RandomNumber": {
-                    "type": "text"
-                },
-                "Message": {
-                    "type": "text"
+    "index_patterns": ["test-*"],
+        "mappings": {
+        "doc": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "@version": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
                 }
+              }
+            },
+            "Logger": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "Message": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "Priority": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "RandomNumber": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "RandomSymbols": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "Time": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "beat": {
+              "properties": {
+                "hostname": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "name": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "version": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                }
+              }
+            },
+            "host": {
+              "properties": {
+                "name": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                }
+              }
+            },
+            "input": {
+              "properties": {
+                "type": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                }
+              }
+            },
+            "log": {
+              "properties": {
+                "file": {
+                  "properties": {
+                    "path": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    }
+                  }
+                },
+                "flags": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                }
+              }
+            },
+            "message": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "offset": {
+              "type": "long"
+            },
+            "prospector": {
+              "properties": {
+                "type": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                }
+              }
+            },
+            "source": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "tags": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
             }
+          }
         }
+      }
     }
-}
