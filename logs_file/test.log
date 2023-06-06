@@ -11,4 +11,4 @@ io.netty.channel.unix.Errors$NativeIoException: readAddress(..) failed: Connecti
         at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:886) [netty-all-4.1.23.Final.jar:4.1.23.Final]
         at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) [netty-all-4.1.23.Final.jar:4.1.23.Final]
         at java.lang.Thread.run(Thread.java:748) [?:1.8.0_161]
-2020-06-08 13:00:44,690  INFO NameLoggerInfo null awe45qw4fgas5edr7gw345tyasdf Random info 123135 message
+2020-06-08 13:00:44,690 INFO NameLoggerInfo null awe45qw4fgas5edr7gw345tyasdf Random info 123135 message

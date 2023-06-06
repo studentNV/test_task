@@ -3,29 +3,29 @@
   template:
     src: logstash.conf.j2
     dest: "{{ path_with_logstash_conf }}"
-    owner: root
-    group: root
-    mode: 0644
+    owner: "{{ user_for_docker_container_logstash }}"
+    group: "{{ user_for_docker_container_logstash }}"
+    mode: "{{ folder_permissions_logstash }}"
 
 - name: logstash.yaml
   template:
     src: logstash.yaml.j2
     dest: "{{ path_with_logstash_yaml }}"
-    owner: root
-    group: root
-    mode: 0644
+    owner: "{{ user_for_docker_container_logstash }}"
+    group: "{{ user_for_docker_container_logstash }}"
+    mode: "{{ folder_permissions_logstash }}"
 
 - name: Create an "{{ docker_image_logstash }}" container
   community.docker.docker_container:
     name: "{{ docker_container_name_logstash }}"
     image: "{{ docker_image_logstash }}"
-    user: root
+    user: "{{ user_for_docker_container_logstash }}"
     env:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"   
       ELASTICSEARCH_HOSTS: "http://{{ docker_container_name_elasticsearch }}:{{ docker_container_elasticsearch_port }}"
     ports:
       #- "9600:9600"
-      - "{{ docker_container_logstash_port }}:5044"
+      - "{{ docker_container_logstash_port }}:{{ docker_container_logstash_port }}"
     networks:
       - name: "{{ docker_network_name }}"
     volumes:

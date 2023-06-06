@@ -9,7 +9,7 @@
     dest: "{{ path_with_filebeat_to_logstash_docker_yaml }}"
     owner: "{{ user_for_docker_container_filebeat }}"
     group: "{{ user_for_docker_container_filebeat }}"
-    mode: "{{ folder_permissions }}"
+    mode: "{{ folder_permissions_filebeat }}"
 
 - name: Create an "{{ docker_image_filebeat }}" container to logstash
   community.docker.docker_container:
@@ -36,7 +36,7 @@
     dest: ./container_dirs/filebeat_dir/filebeat_to_file.docker.yaml
     owner: "{{ user_for_docker_container_filebeat }}"
     group: "{{ user_for_docker_container_filebeat }}"
-    mode: "{{ folder_permissions }}"
+    mode: "{{ folder_permissions_filebeat }}"
 
 - name: Create an "{{ docker_image_filebeat }}" container to file 
   community.docker.docker_container:

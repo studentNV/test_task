@@ -1,10 +1,22 @@
-
-
 filebeat.inputs:
   - type: log
+    multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
+    multiline.negate: true
+    multiline.match: after
     paths:
       - "/usr/share/filebeat/test.log"
 
+filebeat.autodiscover:
+  providers:
+    - type: docker
+      templates:
+        - condition:
+            contains:
+              docker.container.name: {{ docker_container_name_filebeat_to_logstash }}
+          config:
+            - type: container
+              paths:
+                - /var/lib/docker/containers/${data.docker.container.id}/*.log
 
 {% if var_filebeat_container_name == docker_container_name_filebeat_to_logstash %}
 output.logstash:
