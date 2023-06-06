@@ -1,4 +1,4 @@
 ---
 - import_playbook: create_docker_containers_stack_elkf.yaml
-- import_playbook: delete_docker_containers_stack_elkf.yaml
+- import_playbook: stop_and_delete_docker_containers_stack_elkf.yaml
 

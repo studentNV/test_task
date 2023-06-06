@@ -1,8 +1,0 @@
----
-- hosts: group_hosts
-  connection: local
-  become: yes
-  roles:
-    - delete_docker_containers
-  tags: delete_containers
-
