@@ -1,0 +1,12 @@
+---
+- name: Remove containers
+  community.docker.docker_container:
+    name: "{{ item }}"
+    state: absent
+  loop: 
+    - "{{docker_container_name_elasticsearch }}"
+    - "{{docker_container_name_filebeat_to_file }}"
+    - "{{docker_container_name_filebeat_to_logstash }}"
+    - "{{docker_container_name_logstash }}"
+    - "{{docker_container_name_kibana }}"
+  
