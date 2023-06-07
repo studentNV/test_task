@@ -4,4 +4,5 @@
   become: yes
   roles:
     - stop_and_delete_docker_containers
+    - delete_docker_network
   tags: stop_and_delete_containers
