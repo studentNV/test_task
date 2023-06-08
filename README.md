@@ -26,17 +26,17 @@ cd test_task
 ```
 #### Развертка стека ELKF версии 6.7.2
 ```bash
-ansible-playbook --extra-vars "docker_image_version=6.7.2" -i inventory.yaml site.yaml -t create_containers -D
+ansible-playbook --extra-vars "docker_image_version=6.7.2" -i inventory.yml site.yml -t create_containers -D
 ```
 #### Развертка стека ELKF версии 7.7.0
 ```bash
-ansible-playbook --extra-vars "docker_image_version=7.7.0" -i inventory.yaml site.yaml -t create_containers -D
+ansible-playbook --extra-vars "docker_image_version=7.7.0" -i inventory.yml site.yml -t create_containers -D
 ```
 После развертки **web** интерфейс будет доступен по **url** http://locahost:5601/
 
 #### Остановка и удаление всех контейнеров ELKF
 ```bash
-ansible-playbook -i inventory.yaml site.yaml -t stop_and_delete_containers -D
+ansible-playbook -i inventory.yml site.yml -t stop_and_delete_containers -D
 ```
 На хостовой машине предполагается предустановленные следующие программы:
 - Docker version 24.0.2

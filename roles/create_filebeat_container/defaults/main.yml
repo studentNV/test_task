@@ -1,0 +1,8 @@
+---
+var_filebeat_container_name: ""
+path_with_logs_file_logstash: ./logs_file/logs_file_logstash
+path_with_filebeat_to_logstash_docker_yml: ./container_dirs/filebeat_dir/filebeat_to_logstash.docker.yml
+path_with_test_log: ./logs_file/test.log
+path_with_logs_file_filebeat: ./logs_file/logs_file_filebeat
+user_for_docker_container_filebeat: root
+folder_permissions_filebeat: 0644
