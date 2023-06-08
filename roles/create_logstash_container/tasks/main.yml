@@ -7,10 +7,10 @@
     group: "{{ user_for_docker_container_logstash }}"
     mode: "{{ folder_permissions_logstash }}"
 
-- name: logstash.yaml
+- name: logstash.yml
   template:
-    src: logstash.yaml.j2
-    dest: "{{ path_with_logstash_yaml }}"
+    src: logstash.yml.j2
+    dest: "{{ path_with_logstash_yml }}"
     owner: "{{ user_for_docker_container_logstash }}"
     group: "{{ user_for_docker_container_logstash }}"
     mode: "{{ folder_permissions_logstash }}"
@@ -30,5 +30,5 @@
       - name: "{{ docker_network_name }}"
     volumes:
         - "{{ path_with_logstash_conf }}:/usr/share/logstash/pipeline/logstash.conf:ro"
-        - "{{ path_with_logstash_yaml }}:/usr/share/logstash/config/logstash.yml:ro"
+        - "{{ path_with_logstash_yml }}:/usr/share/logstash/config/logstash.yml:ro"
         - "{{ path_with_logs_file_logstash }}:/usr/share/logstash/logs"

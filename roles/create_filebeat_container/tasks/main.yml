@@ -3,10 +3,10 @@
   set_fact:
     var_filebeat_container_name: "{{ docker_container_name_filebeat_to_logstash }}"
    
-- name: filebeat.docker.yaml to logstash
+- name: filebeat.docker.yml to logstash
   template:
-    src: filebeat.docker.yaml.j2
-    dest: "{{ path_with_filebeat_to_logstash_docker_yaml }}"
+    src: filebeat.docker.yml.j2
+    dest: "{{ path_with_filebeat_to_logstash_docker_yml }}"
     owner: "{{ user_for_docker_container_filebeat }}"
     group: "{{ user_for_docker_container_filebeat }}"
     mode: "{{ folder_permissions_filebeat }}"
@@ -21,7 +21,7 @@
       - name: "{{ docker_network_name }}"
     user: "{{ user_for_docker_container_filebeat }}"
     volumes:
-      - "{{ path_with_filebeat_to_logstash_docker_yaml }}:/usr/share/filebeat/filebeat.yml:ro"
+      - "{{ path_with_filebeat_to_logstash_docker_yml }}:/usr/share/filebeat/filebeat.yml:ro"
       - "{{ path_with_test_log }}:/usr/share/filebeat/test.log:ro"
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -30,10 +30,10 @@
   set_fact:
     var_filebeat_container_name: "{{ docker_container_name_filebeat_to_file }}"
 
-- name: filebeat.docker.yaml to file  
+- name: filebeat.docker.yml to file  
   template:
-    src: filebeat.docker.yaml.j2
-    dest: ./container_dirs/filebeat_dir/filebeat_to_file.docker.yaml
+    src: filebeat.docker.yml.j2
+    dest: ./container_dirs/filebeat_dir/filebeat_to_file.docker.yml
     owner: "{{ user_for_docker_container_filebeat }}"
     group: "{{ user_for_docker_container_filebeat }}"
     mode: "{{ folder_permissions_filebeat }}"
@@ -48,7 +48,7 @@
       - name: "{{ docker_network_name }}"
     user: "{{ user_for_docker_container_filebeat }}"
     volumes:
-      - ./container_dirs/filebeat_dir/filebeat_to_file.docker.yaml:/usr/share/filebeat/filebeat.yml:ro
+      - ./container_dirs/filebeat_dir/filebeat_to_file.docker.yml:/usr/share/filebeat/filebeat.yml:ro
       - "{{ path_with_test_log }}:/usr/share/filebeat/test.log:ro"
       - "{{ path_with_logs_file_filebeat }}:/usr/share/filebeat/logs"
       - /var/lib/docker/containers:/var/lib/docker/containers:ro

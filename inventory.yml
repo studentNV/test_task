@@ -1,2 +1,2 @@
-yml[elkf_hosts]
+[elkf_hosts]
 localhost ansible_host=localhost

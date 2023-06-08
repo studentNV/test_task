@@ -1,0 +1,44 @@
+---
+- name: Create an "{{ docker_image_elasticsearch }}" container
+  community.docker.docker_container:
+    name: "{{ docker_container_name_elasticsearch }}"
+    image: "{{ docker_image_elasticsearch }}" 
+    env:
+      discovery.type: "single-node"
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+    ports:
+      #- "9300:9300"
+      - "{{ docker_container_elasticsearch_port }}:9200"
+    networks:
+      - name: "{{ docker_network_name }}"
+
+- name: Check that an elastic returns successfully 
+  ansible.builtin.uri:
+    url: "http://{{ ansible_host }}:{{ docker_container_elasticsearch_port }}"
+    method: GET
+  register: _result
+  until: _result.status == 200
+  retries: 60
+  delay: 10
+
+# - name: PUT elastic 7.7.0 index template
+#   ansible.builtin.uri:
+#     url: "http://{{ ansible_host }}:{{ docker_container_elasticsearch_port }}/_template/test_template?pretty"
+#     method: PUT
+#     body_format: json
+#     headers:
+#       Content-Type: application/json
+#       kbn-xsrf: true
+#     src: "{{ path_with_elastic_template_json_v770 }}"
+#   when: docker_image_version == "7.7.0"
+
+# - name: PUT elastic 6.7.2 index template
+#   ansible.builtin.uri:
+#     url: "http://{{ ansible_host }}:{{ docker_container_elasticsearch_port }}/_template/test_template?pretty"
+#     method: PUT
+#     body_format: json
+#     headers:
+#       Content-Type: application/json
+#       kbn-xsrf: true
+#     src: "{{ path_with_elastic_template_json_v672 }}"
+#   when: docker_image_version == "6.7.2"
